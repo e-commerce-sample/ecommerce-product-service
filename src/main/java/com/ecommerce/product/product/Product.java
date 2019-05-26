@@ -2,6 +2,7 @@ package com.ecommerce.product.product;
 
 
 import com.ecommerce.common.event.DomainEventAwareAggregate;
+import com.ecommerce.common.event.product.ProductCreatedEvent;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -22,7 +23,7 @@ public class Product extends DomainEventAwareAggregate {
         this.description = description;
         this.price = price;
         this.createdAt = Instant.now();
-//        raiseEvent(new ProductCreatedEvent(this));
+        raiseEvent(new ProductCreatedEvent(id.toString(), name, description, price, createdAt));
     }
 
     public static Product create(String name, String description, BigDecimal price) {

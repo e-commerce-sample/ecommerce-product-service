@@ -33,7 +33,7 @@ class ProductApiTest extends BaseApiTest {
 
     @Test
     public void should_list_product_summary() {
-        range(1, 10).forEach(value -> repository.save(create("喜乐多", "喜乐多真好喝", valueOf(5))));
+        range(0, 10).forEach(value -> repository.save(create("喜乐多", "喜乐多真好喝", valueOf(5))));
         given()
                 .when()
                 .get("/products?pageIndex=2&pageSize=5")
