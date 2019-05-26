@@ -18,7 +18,7 @@ plugins {
 
 repositories {
     maven { url "https://maven.aliyun.com/repository/central" }
-    maven { url "http://localhost:8081/repository/maven-snapshots/" }
+    maven { url "http://localhost:9091/repository/maven-snapshots/" }
 }
 
 application {

@@ -1,0 +1,15 @@
+.classpath
+.project
+.settings
+.gradle
+.idea
+.shelf
+*.iml
+*.ipr
+*.iws
+.DS_Store
+out/
+build/**
+classes/
+.ideaDataSources/
+dataSources/
