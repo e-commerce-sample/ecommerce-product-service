@@ -5,6 +5,7 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.ecommerce.common.event.DomainEventType.INVENTORY_CHANGED;
 import static org.springframework.amqp.core.Binding.DestinationType.QUEUE;
 
 @Configuration
@@ -16,10 +17,10 @@ public class ProductRabbitmqConfig {
         this.properties = properties;
     }
 
-    //将product上下文的"接收方queue"绑定到inventory上下文的"发送方exchange"，用于实时更新product对应的库存量
+    //接收inventory上下文的InventoryChangedEvent事件，用于实时更新product对应的库存量
     @Bean
-    public Binding bindToInventory() {
-        return new Binding(properties.getReceiveQ(), QUEUE, "inventory-publish-x", "inventory.changed", null);
+    public Binding bindToInventoryChanged() {
+        return new Binding(properties.getReceiveQ(), QUEUE, "inventory-publish-x", INVENTORY_CHANGED.toRoutingKey(), null);
     }
 
 
