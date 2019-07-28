@@ -15,11 +15,14 @@ spring:
     virtual-host: /
     username: rabbitmq-user
     password: rabbitmq-password
-    publisher-confirms: true
-
 
 
 ecommerce:
-  order:
-    jwtSecret: whateversecret
-    jwtExpireMinutes: 30
+  rabbit:
+    publishX: product
+    publishDlx: product-publish-dlx
+    publishDlq: product-publish-dlq
+    receiveQ: product-receive-q
+    receiveDlx: product-receive-dlx
+    receiveDlq: order-receive-dlq
+    receiveRecoverX: product-receive-recover-x

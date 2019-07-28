@@ -18,4 +18,12 @@ public class ProductApplicationService {
         productRepository.save(product);
         return product.getId();
     }
+
+    @Transactional
+    public ProductId updateProductName(String productId, UpdateProductNameCommand command) {
+        Product product = productRepository.byId(ProductId.productId(productId));
+        product.updateName(command.getNewName());
+        productRepository.save(product);
+        return product.getId();
+    }
 }

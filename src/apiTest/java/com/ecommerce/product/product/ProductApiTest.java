@@ -53,4 +53,21 @@ class ProductApiTest extends BaseApiTest {
     }
 
 
+    @Test
+    public void should_update_product_name() {
+        Product product = create("喜茶", "喜茶", valueOf(10));
+        repository.save(product);
+        given()
+                .contentType("application/json")
+                .body(new UpdateProductNameCommand("新喜茶"))
+                .when()
+                .put("/products/{id}/name", product.getId().toString())
+                .then().statusCode(200);
+
+        Product updatedProduct = repository.byId(product.getId());
+        assertEquals("新喜茶", updatedProduct.getName());
+
+    }
+
+
 }

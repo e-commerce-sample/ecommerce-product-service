@@ -6,6 +6,7 @@ import com.ecommerce.product.product.representation.ProductSummaryRepresentation
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,13 @@ public class ProductController {
     @ResponseStatus(CREATED)
     public ProductId createProduct(@RequestBody @Valid CreateProductCommand command) {
         return productApplicationService.create(command);
+    }
+
+
+    @PutMapping("/{id}/name")
+    public ProductId updateProductName(@PathVariable("id") String productId,
+                                       @RequestBody @Valid UpdateProductNameCommand command) {
+        return productApplicationService.updateProductName(productId, command);
     }
 
 
