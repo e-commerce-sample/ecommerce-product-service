@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.ecommerce.product.product.ProductId.productId;
+import static com.ecommerce.product.product.ProductId.of;
 
 @Component
 public class ProductEventHandler {
@@ -21,7 +21,7 @@ public class ProductEventHandler {
 
     @Transactional
     public void updateProductInventory(String productId, int remains) {
-        Product product = repository.byId(productId(productId));
+        Product product = repository.byId(of(productId));
         product.updateInventory(remains);
         repository.save(product);
         logger.info("Product inventory updated due to inventory change.");

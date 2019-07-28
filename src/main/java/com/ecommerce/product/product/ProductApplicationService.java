@@ -21,7 +21,7 @@ public class ProductApplicationService {
 
     @Transactional
     public ProductId updateProductName(String productId, UpdateProductNameCommand command) {
-        Product product = productRepository.byId(ProductId.productId(productId));
+        Product product = productRepository.byId(ProductId.of(productId));
         product.updateName(command.getNewName());
         productRepository.save(product);
         return product.getId();

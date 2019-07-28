@@ -14,11 +14,11 @@ public class ProductId extends AbstractId {
         super(id);
     }
 
-    public static ProductId productId(String id) {
+    public static ProductId of(String id) {
         return new ProductId(id);
     }
 
-    public static ProductId newProductId() {
+    public static ProductId newId() {
         return new ProductId(newUuid());
     }
 

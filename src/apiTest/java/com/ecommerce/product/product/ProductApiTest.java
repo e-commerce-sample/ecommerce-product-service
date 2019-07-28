@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.ecommerce.product.product.Product.create;
-import static com.ecommerce.product.product.ProductId.productId;
+import static com.ecommerce.product.product.ProductId.of;
 import static java.math.BigDecimal.valueOf;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.Matchers.is;
@@ -26,7 +26,7 @@ class ProductApiTest extends BaseApiTest {
                 .post("/products")
                 .then().statusCode(201)
                 .extract().body().jsonPath().getString("id");
-        Product product = repository.byId(productId(id));
+        Product product = repository.byId(of(id));
         assertNotNull(product);
         assertEquals(id, product.getId().toString());
     }

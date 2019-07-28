@@ -20,7 +20,7 @@ public class Product extends DomainEventAwareAggregate {
     }
 
     private Product(String name, String description, BigDecimal price) {
-        this.id = ProductId.newProductId();
+        this.id = ProductId.newId();
         this.name = name;
         this.description = description;
         this.price = price;
