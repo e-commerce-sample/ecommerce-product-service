@@ -21,7 +21,7 @@ public class ProductRepresentationService {
     }
 
 
-    // TODO: 2019-05-25 通过数据模型获取Product信息
+    //直接返回数据库中的Json数据，减少了反序列化和序列化的步骤
     @Transactional(readOnly = true)
     public String byId(String id) {
         return jdbcTemplate.queryForObject("SELECT JSON_CONTENT FROM PRODUCT WHERE ID =:id;",
@@ -29,6 +29,7 @@ public class ProductRepresentationService {
                 String.class);
     }
 
+    //相同的数据模型，但是独立的读模型
     @Transactional(readOnly = true)
     public PagedResource<ProductSummaryRepresentation> listProducts(int pageIndex, int pageSize) {
         MapSqlParameterSource parameters = new MapSqlParameterSource();

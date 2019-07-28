@@ -1,9 +1,9 @@
 package com.ecommerce.product;
 
-import com.ecommerce.common.exception.ErrorEnum;
 
+import com.ecommerce.common.exception.ErrorCode;
 
-public enum ProductErrorCode implements ErrorEnum {
+public enum ProductErrorCode implements ErrorCode {
     PRODUCT_NOT_FOUND(404, "没有找到产品");
     private int status;
     private String message;
