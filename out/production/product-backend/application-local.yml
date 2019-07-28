@@ -19,7 +19,7 @@ spring:
 
 ecommerce:
   rabbit:
-    publishX: product
+    publishX: product-publish-x
     publishDlx: product-publish-dlx
     publishDlq: product-publish-dlq
     receiveQ: product-receive-q

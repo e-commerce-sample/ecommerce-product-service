@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @EcommerceRabbitListener
-public class OrderRabbitListener {
+public class ProductRabbitListener {
     private static final Logger logger = AutoNamingLoggerFactory.getLogger();
 
     private ProductEventHandler eventHandler;
 
-    public OrderRabbitListener(ProductEventHandler eventHandler) {
+    public ProductRabbitListener(ProductEventHandler eventHandler) {
         this.eventHandler = eventHandler;
     }
 

@@ -24,5 +24,5 @@ ecommerce:
     publishDlq: product-publish-dlq
     receiveQ: product-receive-q
     receiveDlx: product-receive-dlx
-    receiveDlq: order-receive-dlq
+    receiveDlq: product-receive-dlq
     receiveRecoverX: product-receive-recover-x

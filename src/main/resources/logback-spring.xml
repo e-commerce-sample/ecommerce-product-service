@@ -29,7 +29,7 @@
         </appender>
 
         <appender name="REDIS" class="com.cwbase.logback.RedisAppender">
-            <tags>ecommerce-order-backend-${ACTIVE_PROFILE}</tags>
+            <tags>ecommerce-product-backend-${ACTIVE_PROFILE}</tags>
             <host>elk.yourdomain.com</host>
             <port>6379</port>
             <password>whatever</password>
