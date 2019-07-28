@@ -23,7 +23,7 @@ repositories {
 
 application {
     mainClassName = "com.ecommerce.Application"
-    applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"]
+    applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5006"]
 }
 
 sourceCompatibility = 1.8

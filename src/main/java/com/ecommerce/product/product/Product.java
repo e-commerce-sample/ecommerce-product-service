@@ -14,6 +14,7 @@ public class Product extends DomainEventAwareAggregate {
     private String description;
     private BigDecimal price;
     private Instant createdAt;
+    private int inventory;
 
     private Product() {
     }
@@ -24,6 +25,7 @@ public class Product extends DomainEventAwareAggregate {
         this.description = description;
         this.price = price;
         this.createdAt = Instant.now();
+        this.inventory = 0;
     }
 
     public static Product create(String name, String description, BigDecimal price) {
@@ -35,6 +37,10 @@ public class Product extends DomainEventAwareAggregate {
     public void updateName(String newName) {
         raiseEvent(new ProductNameUpdatedEvent(this.getId().toString(), name, newName));
         this.name = newName;
+    }
+
+    public void updateInventory(int inventory) {
+        this.inventory = inventory;
     }
 
     public ProductId getId() {

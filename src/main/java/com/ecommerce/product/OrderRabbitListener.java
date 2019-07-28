@@ -12,9 +12,16 @@ import org.springframework.stereotype.Component;
 public class OrderRabbitListener {
     private static final Logger logger = AutoNamingLoggerFactory.getLogger();
 
+    private ProductEventHandler eventHandler;
+
+    public OrderRabbitListener(ProductEventHandler eventHandler) {
+        this.eventHandler = eventHandler;
+    }
+
 
     @RabbitHandler
     public void on(InventoryChangedEvent event) {
+        eventHandler.updateProductInventory(event.getProductId(), event.getRemains());
     }
 
 }
