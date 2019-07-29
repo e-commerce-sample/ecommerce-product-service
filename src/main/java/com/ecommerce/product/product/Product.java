@@ -62,4 +62,8 @@ public class Product extends DomainEventAwareAggregate {
     public Instant getCreatedAt() {
         return createdAt;
     }
+
+    public int getInventory() {
+        return inventory;
+    }
 }

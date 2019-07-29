@@ -24,6 +24,6 @@ public class ProductEventHandler {
         Product product = repository.byId(of(productId));
         product.updateInventory(remains);
         repository.save(product);
-        logger.info("Product[{}] inventory updated due to inventory change.", productId);
+        logger.info("Product[{}] inventory updated to {} due to inventory change.", productId, product.getInventory());
     }
 }
