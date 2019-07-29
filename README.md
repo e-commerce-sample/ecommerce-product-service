@@ -1,8 +1,5 @@
-# 本示例代码对应博客：
-- [Spring Boot项目模板](https://www.jianshu.com/p/bd8136129dfb)
-
 # 项目简介
-本项目是ecommerce系统的产品子系统，用于向用户展示产品信息。
+本项目是ecommerce系统的产品(Product)子系统，用于向用户展示产品信息。
 
 # 技术选型
 Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker
@@ -11,16 +8,13 @@ Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker
 
 在本地构建之前必须完成以下步骤：
 - 命令行进入[`ecommerce-sample/devops`](https://github.com/e-commerce-sample/devops)项目的跟目录
-- 运行`./start-nexus.sh`，用于启动Nexus
-- 运行`./start-rabbitmq.sh`，用于启动RabbitMQ
-- 命令行进入[`ecommerce-sample/common`](https://github.com/e-commerce-sample/common)项目的根目录
-- 运行`./publish.sh`，该命令将推送公共的`common.jar`包到Nexus
+- 运行`./start-rabbitmq.sh`，用于启动RabbitMQ，整个Ecommerce下的所有服务只需启动RabbitMQ一次
 
 
 |功能|命令|备注|
 | --- | --- | --- |
 |生成IntelliJ工程|`./idea.sh`|自动打开IntelliJ|
-|本地运行|`./run.sh`|自动启动MySQL，监听5005调试端口|
+|本地运行|`./run.sh`|自动启动MySQL，开启HTTP 8082端口，监听5006调试端口|
 |本地构建|`./local-build.sh`|启动启动MySQL，运行所有类型的自动化测试|
 |停止MySQL|`./gradlew composeDown`|将清空所有数据|
 |手动启动MySQL|`./gradlew composeUp`||
