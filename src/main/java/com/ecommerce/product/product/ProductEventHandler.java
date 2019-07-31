@@ -1,8 +1,7 @@
-package com.ecommerce.product;
+package com.ecommerce.product.product;
 
+import com.ecommerce.common.event.inventory.InventoryChangedEvent;
 import com.ecommerce.common.logging.AutoNamingLoggerFactory;
-import com.ecommerce.product.product.Product;
-import com.ecommerce.product.product.ProductRepository;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,10 +19,10 @@ public class ProductEventHandler {
     }
 
     @Transactional
-    public void updateProductInventory(String productId, int remains) {
-        Product product = repository.byId(of(productId));
-        product.updateInventory(remains);
+    public void updateProductInventory(InventoryChangedEvent event) {
+        Product product = repository.byId(of(event.getProductId()));
+        product.updateInventory(event.getRemains());
         repository.save(product);
-        logger.info("Product[{}] inventory updated to {} due to inventory change.", productId, product.getInventory());
+        logger.info("Product[{}] inventory updated to {} due to inventory change.", event.getProductId(), product.getInventory());
     }
 }

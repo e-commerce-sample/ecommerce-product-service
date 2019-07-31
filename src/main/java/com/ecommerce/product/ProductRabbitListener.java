@@ -2,6 +2,7 @@ package com.ecommerce.product;
 
 import com.ecommerce.common.event.consume.EcommerceRabbitListener;
 import com.ecommerce.common.event.inventory.InventoryChangedEvent;
+import com.ecommerce.product.product.ProductEventHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,7 @@ public class ProductRabbitListener {
 
     @RabbitHandler
     public void on(InventoryChangedEvent event) {
-        eventHandler.updateProductInventory(event.getProductId(), event.getRemains());
+        eventHandler.updateProductInventory(event);
     }
 
 }
