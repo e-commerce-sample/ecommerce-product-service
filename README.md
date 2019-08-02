@@ -13,7 +13,7 @@ Ecommerce项目包括：
 
 
 # 技术选型
-Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker
+Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker、RabbitMQ
 
 # 本地构建
 
