@@ -1,0 +1,6 @@
+spring.application.name: product-backend
+spring.zipkin.baseUrl: http://localhost:9411
+spring.zipkin.sender.type: web
+spring.sleuth.sampler.probability: 1.0
+spring.main.allow-bean-definition-overriding: true
+#spring.sleuth.messaging.rabbit.enabled: true
