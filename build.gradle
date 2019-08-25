@@ -29,12 +29,14 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile platform('org.springframework.boot:spring-boot-dependencies:2.1.4.RELEASE')
+
     //spring dependencies
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-actuator')
     implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("com.ecommerce:ecommerce-common:0.30-SNAPSHOT")
+    implementation("com.ecommerce:ecommerce-common:0.33-SNAPSHOT")
 
     //common dependencies
     implementation("mysql:mysql-connector-java:8.0.15")

@@ -4,6 +4,7 @@ import com.ecommerce.common.event.consume.EcommerceRabbitListener;
 import com.ecommerce.common.event.inventory.InventoryChangedEvent;
 import com.ecommerce.product.product.ProductEventHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +17,7 @@ public class ProductRabbitListener {
     }
 
 
+    @NewSpan("Update inventory according to inventory")
     @RabbitHandler
     public void on(InventoryChangedEvent event) {
         eventHandler.updateProductInventory(event);
