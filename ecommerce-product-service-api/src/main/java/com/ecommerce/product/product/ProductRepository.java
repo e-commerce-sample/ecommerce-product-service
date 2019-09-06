@@ -29,11 +29,11 @@ public class ProductRepository extends BaseRepository<Product> {
     protected void doSave(Product product) {
         String sql = "INSERT INTO PRODUCT (ID, JSON_CONTENT) VALUES (:id, :json) " +
                 "ON DUPLICATE KEY UPDATE JSON_CONTENT=:json;";
-        Map<String, String> paramMap = of("id", product.getId().toString(), "json", objectMapper.writeValueAsString(product));
+        Map<String, String> paramMap = of("id", product.getId(), "json", objectMapper.writeValueAsString(product));
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public Product byId(ProductId id) {
+    public Product byId(String id) {
         try {
             String sql = "SELECT JSON_CONTENT FROM PRODUCT WHERE ID=:id;";
             return jdbcTemplate.queryForObject(sql, of("id", id.toString()), mapper());

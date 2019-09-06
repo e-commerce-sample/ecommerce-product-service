@@ -5,8 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.ecommerce.product.product.ProductId.of;
-
 @Slf4j
 @Component
 public class ProductEventHandler {
@@ -20,7 +18,7 @@ public class ProductEventHandler {
 
     @Transactional
     public void updateProductInventory(InventoryChangedEvent event) {
-        Product product = repository.byId(of(event.getProductId()));
+        Product product = repository.byId(event.getProductId());
         product.updateInventory(event.getRemains());
         repository.save(product);
         log.info("Product[{}] inventory updated to {} due to inventory change.", event.getProductId(), product.getInventory());

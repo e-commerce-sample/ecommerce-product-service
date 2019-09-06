@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Map;
 
+import static com.google.common.collect.ImmutableMap.of;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
@@ -34,15 +36,15 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public ProductId createProduct(@RequestBody @Valid CreateProductCommand command) {
-        return productApplicationService.create(command);
+    public Map<String, String> createProduct(@RequestBody @Valid CreateProductCommand command) {
+        return of("id", productApplicationService.create(command));
     }
 
 
     @PutMapping("/{id}/name")
-    public ProductId updateProductName(@PathVariable("id") String productId,
-                                       @RequestBody @Valid UpdateProductNameCommand command) {
-        return productApplicationService.updateProductName(productId, command);
+    public Map<String, String> updateProductName(@PathVariable("id") String productId,
+                                                 @RequestBody @Valid UpdateProductNameCommand command) {
+        return of("id", productApplicationService.updateProductName(productId, command));
     }
 
 

@@ -17,7 +17,7 @@ public class ProductApplicationService {
     }
 
     @Transactional
-    public ProductId create(CreateProductCommand command) {
+    public String create(CreateProductCommand command) {
         Product product = Product.create(command.getName(), command.getDescription(), command.getPrice());
         productRepository.save(product);
         log.info("Created product[{}].", product.getId());
@@ -25,8 +25,8 @@ public class ProductApplicationService {
     }
 
     @Transactional
-    public ProductId updateProductName(String productId, UpdateProductNameCommand command) {
-        Product product = productRepository.byId(ProductId.of(productId));
+    public String updateProductName(String productId, UpdateProductNameCommand command) {
+        Product product = productRepository.byId(productId);
         product.updateName(command.getNewName());
         productRepository.save(product);
         log.info("Updated name to {} for product[{}].", product.getName(), product.getId());

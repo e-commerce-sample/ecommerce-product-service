@@ -8,8 +8,10 @@ import com.ecommerce.shared.model.BaseAggregate;
 import java.math.BigDecimal;
 import java.time.Instant;
 
+import static com.ecommerce.shared.utils.UuidGenerator.newUuid;
+
 public class Product extends BaseAggregate {
-    private ProductId id;
+    private String id;
     private String name;
     private String description;
     private BigDecimal price;
@@ -20,7 +22,7 @@ public class Product extends BaseAggregate {
     }
 
     private Product(String name, String description, BigDecimal price) {
-        this.id = ProductId.newId();
+        this.id = newUuid();
         this.name = name;
         this.description = description;
         this.price = price;
@@ -30,12 +32,12 @@ public class Product extends BaseAggregate {
 
     public static Product create(String name, String description, BigDecimal price) {
         Product product = new Product(name, description, price);
-        product.raiseEvent(new ProductCreatedEvent(product.getId().toString(), name, description, price, product.getCreatedAt()));
+        product.raiseEvent(new ProductCreatedEvent(product.getId(), name, description, price, product.getCreatedAt()));
         return product;
     }
 
     public void updateName(String newName) {
-        raiseEvent(new ProductNameUpdatedEvent(this.getId().toString(), name, newName));
+        raiseEvent(new ProductNameUpdatedEvent(this.getId(), name, newName));
         this.name = newName;
     }
 
@@ -43,7 +45,7 @@ public class Product extends BaseAggregate {
         this.inventory = inventory;
     }
 
-    public ProductId getId() {
+    public String getId() {
         return id;
     }
 

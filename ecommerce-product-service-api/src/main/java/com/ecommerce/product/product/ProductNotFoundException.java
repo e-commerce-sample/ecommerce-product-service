@@ -7,7 +7,7 @@ import static com.ecommerce.product.ProductErrorCode.PRODUCT_NOT_FOUND;
 
 
 public class ProductNotFoundException extends AppException {
-    public ProductNotFoundException(ProductId id) {
-        super(PRODUCT_NOT_FOUND, ImmutableMap.of("productId", id.toString()));
+    public ProductNotFoundException(String id) {
+        super(PRODUCT_NOT_FOUND, ImmutableMap.of("productId", id));
     }
 }

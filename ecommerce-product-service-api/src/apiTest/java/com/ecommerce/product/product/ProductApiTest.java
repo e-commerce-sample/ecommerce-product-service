@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.ecommerce.product.product.Product.create;
-import static com.ecommerce.product.product.ProductId.of;
 import static java.math.BigDecimal.valueOf;
 import static java.util.stream.IntStream.range;
 import static org.hamcrest.Matchers.is;
@@ -28,9 +27,9 @@ class ProductApiTest extends BaseApiTest {
                 .post("/products")
                 .then().statusCode(201)
                 .extract().body().jsonPath().getString("id");
-        Product product = repository.byId(of(id));
+        Product product = repository.byId(id);
         assertNotNull(product);
-        assertEquals(id, product.getId().toString());
+        assertEquals(id, product.getId());
     }
 
     @Test
@@ -49,7 +48,7 @@ class ProductApiTest extends BaseApiTest {
         Product product = create("喜茶", "喜茶", valueOf(10));
         repository.save(product);
         given()
-                .when().get("/products/{id}", product.getId().toString())
+                .when().get("/products/{id}", product.getId())
                 .then().statusCode(200)
                 .body("name", is("喜茶"));
     }
@@ -63,7 +62,7 @@ class ProductApiTest extends BaseApiTest {
                 .contentType("application/json")
                 .body(new UpdateProductNameCommand("新喜茶"))
                 .when()
-                .put("/products/{id}/name", product.getId().toString())
+                .put("/products/{id}/name", product.getId())
                 .then().statusCode(200);
 
         Product updatedProduct = repository.byId(product.getId());

@@ -2,9 +2,9 @@
 
 set -e
 
-#Stop existing docker containers and remove all its data volumes
+echo "Stop existing docker containers and remove all its data volumes"
 ./gradlew composeDown
 
-#Start build process...
+echo "Start build process..."
 ./gradlew clean  build
 
