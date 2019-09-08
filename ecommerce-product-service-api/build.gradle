@@ -1,0 +1,79 @@
+plugins {
+    id 'application'
+    id "org.springframework.boot" version "2.1.4.RELEASE"
+}
+
+application {
+    mainClassName = "com.ecommerce.Application"
+    applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5006"]
+}
+
+
+sourceSets {
+
+    componentTest {
+        compileClasspath += sourceSets.main.output + sourceSets.test.output
+        runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+    }
+
+    apiTest {
+        compileClasspath += sourceSets.main.output + sourceSets.test.output
+        runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+    }
+}
+
+
+dependencies {
+    implementation project(':ecommerce-product-service-sdk')
+    implementation("com.ecommerce:ecommerce-spring-common:0.41-SNAPSHOT") { changing = true }
+    implementation("com.ecommerce:ecommerce-inventory-service-sdk:0.1-SNAPSHOT") { changing = true }
+    implementation("com.ecommerce:ecommerce-order-service-sdk:0.1-SNAPSHOT") { changing = true }
+
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.4.RELEASE')
+
+
+    //test dependencies
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.rest-assured:spring-mock-mvc")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation('org.junit.jupiter:junit-jupiter-engine')
+    testImplementation('org.mockito:mockito-junit-jupiter:2.26.0')
+}
+
+
+configurations {
+    componentTestImplementation.extendsFrom testImplementation
+    componentTestRuntimeOnly.extendsFrom testRuntimeOnly
+    apiTestImplementation.extendsFrom testImplementation
+    apiTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+
+task componentTest(type: Test) {
+    description = 'Run component tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.componentTest.output.classesDirs
+    classpath = sourceSets.componentTest.runtimeClasspath
+    shouldRunAfter test
+}
+
+
+task apiTest(type: Test) {
+    description = 'Run API tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.apiTest.output.classesDirs
+    classpath = sourceSets.apiTest.runtimeClasspath
+    shouldRunAfter componentTest
+}
+
+check.dependsOn componentTest
+check.dependsOn apiTest
+
+bootJar {
+    launchScript()
+}
+
+apply from: "${projectDir}/gradle/idea.gradle"
+apply from: "${projectDir}/gradle/docker-compose/docker-compose.gradle"
+apply from: "${projectDir}/gradle/version-info.gradle"
+apply from: "${projectDir}/gradle/jacoco.gradle"

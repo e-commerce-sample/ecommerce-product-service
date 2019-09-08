@@ -5,15 +5,16 @@ Ecommerce项目包括：
 
 |代码库|用途|地址|
 | --- | --- | --- |
-|order-backend|Order服务|[https://github.com/e-commerce-sample/order-backend](https://github.com/e-commerce-sample/order-backend)|
-|product-backend|Product服务|[https://github.com/e-commerce-sample/product-backend](https://github.com/e-commerce-sample/product-backend)|
-|inventory-backend|Inventory服务|[https://github.com/e-commerce-sample/inventory-backend](https://github.com/e-commerce-sample/inventory-backend)|
-|common|共享依赖包|[https://github.com/e-commerce-sample/common](https://github.com/e-commerce-sample/common)|
-|devops|基础设施|[https://github.com/e-commerce-sample/devops](https://github.com/e-commerce-sample/devops)|
+|ecommerce-order-service|Order服务|[https://github.com/e-commerce-sample/ecommerce-order-service](https://github.com/e-commerce-sample/ecommerce-order-service)|
+|ecommerce-product-service|Product服务|[https://github.com/e-commerce-sample/ecommerce-product-service](https://github.com/e-commerce-sample/ecommerce-product-service)|
+|ecommerce-inventory-service|Inventory服务|[https://github.com/e-commerce-sample/ecommerce-inventory-service](https://github.com/e-commerce-sample/ecommerce-inventory-service)|
+|ecommerce-shared-model|共享模型，不含Spring|[https://github.com/e-commerce-sample/ecommerce-shared-model](https://github.com/e-commerce-sample/ecommerce-shared-model)|
+|ecommerce-spring-common|Spring共享基础配置|[https://github.com/e-commerce-sample/ecommerce-spring-common](https://github.com/e-commerce-sample/ecommerce-spring-common)|
+|ecommerce-devops|基础设施|[https://github.com/e-commerce-sample/ecommerce-devops](https://github.com/e-commerce-sample/ecommerce-devops)|
 
 
 # 技术选型
-Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker、RabbitMQ
+Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker、RabbitMQ/Kafka
 
 # 本地构建
 
@@ -31,6 +32,8 @@ Spring Boot、Gradle、MySQL、Junit 5、Rest Assured、Docker、RabbitMQ
 |本地构建|`./local-build.sh`|启动启动MySQL，运行所有类型的自动化测试|
 |停止MySQL|`./gradlew composeDown`|将清空所有数据|
 |手动启动MySQL|`./gradlew composeUp`||
+|发布sdk|`./publish-sdk.sh`|可以通过修改`gradle.properties`文件中的`version`指定版本|
+
 
 # 领域对象
 |领域对象|中文名|业务功能|
