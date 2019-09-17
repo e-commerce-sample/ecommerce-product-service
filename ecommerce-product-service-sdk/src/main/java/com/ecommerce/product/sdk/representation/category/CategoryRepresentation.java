@@ -1,12 +1,10 @@
 package com.ecommerce.product.sdk.representation.category;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.Value;
 
 import java.time.Instant;
 
-@Builder
-@Getter
+@Value
 public class CategoryRepresentation {
     private String id;
     private String name;

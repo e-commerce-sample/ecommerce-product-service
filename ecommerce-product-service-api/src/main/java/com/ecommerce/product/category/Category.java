@@ -36,10 +36,9 @@ public class Category extends BaseAggregate {
     }
 
     public CategoryRepresentation toRepresentation() {
-        return CategoryRepresentation.builder()
-                .id(this.id)
-                .name(this.name)
-                .description(this.description)
-                .createdAt(this.createdAt).build();
+        return new CategoryRepresentation(this.id,
+                this.name,
+                this.description,
+                this.createdAt);
     }
 }

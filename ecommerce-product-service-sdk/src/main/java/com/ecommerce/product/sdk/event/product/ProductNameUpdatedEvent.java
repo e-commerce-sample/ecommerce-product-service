@@ -1,21 +1,12 @@
 package com.ecommerce.product.sdk.event.product;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
+import com.ecommerce.shared.event.DomainEvent;
+import lombok.Value;
 
-@Getter
-public class ProductNameUpdatedEvent extends ProductEvent {
+@Value
+public class ProductNameUpdatedEvent extends DomainEvent {
+    private String productId;
     private String oldName;
     private String newName;
-
-    @JsonCreator
-    public ProductNameUpdatedEvent(@JsonProperty("productId") String productId,
-                                   @JsonProperty("oldName") String oldName,
-                                   @JsonProperty("newName") String newName) {
-        super(productId);
-        this.oldName = oldName;
-        this.newName = newName;
-    }
 
 }

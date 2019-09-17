@@ -1,20 +1,11 @@
 package com.ecommerce.product.sdk.event.category;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
+import com.ecommerce.shared.event.DomainEvent;
+import lombok.Value;
 
-@Getter
-public class CategoryCreatedEvent extends CategoryEvent {
+@Value
+public class CategoryCreatedEvent extends DomainEvent {
+    private String categoryId;
     private String name;
     private String description;
-
-    @JsonCreator
-    public CategoryCreatedEvent(@JsonProperty("id") String id,
-                                @JsonProperty("name") String name,
-                                @JsonProperty("description") String description) {
-        super(id);
-        this.name = name;
-        this.description = description;
-    }
 }
