@@ -1,24 +1,20 @@
 package com.ecommerce.product.sdk.command.category;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class CreateCategoryCommand {
     @NotBlank(message = "产品目录名字不能为空")
-    private final String name;
+    private String name;
 
     @NotBlank(message = "产品目录描述不能为空")
-    private final String description;
+    private String description;
 
-
-    @JsonCreator
-    public CreateCategoryCommand(@JsonProperty("name") String name,
-                                 @JsonProperty("description") String description) {
-        this.name = name;
-        this.description = description;
-    }
 }
