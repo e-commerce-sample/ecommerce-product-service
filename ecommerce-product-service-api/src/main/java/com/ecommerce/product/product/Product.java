@@ -3,12 +3,10 @@ package com.ecommerce.product.product;
 
 import com.ecommerce.product.sdk.event.product.ProductCreatedEvent;
 import com.ecommerce.product.sdk.event.product.ProductNameUpdatedEvent;
+import com.ecommerce.product.sdk.representation.product.ProductRepresentation;
 import com.ecommerce.shared.model.BaseAggregate;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -17,8 +15,6 @@ import static com.ecommerce.shared.utils.UuidGenerator.newUuid;
 
 @Builder
 @Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class Product extends BaseAggregate {
     private String id;
     private String name;
@@ -51,4 +47,13 @@ public class Product extends BaseAggregate {
         this.inventory = inventory;
     }
 
+    public ProductRepresentation toRepresentation() {
+        return new ProductRepresentation(id,
+                name,
+                description,
+                price,
+                createdAt,
+                inventory,
+                categoryId);
+    }
 }
