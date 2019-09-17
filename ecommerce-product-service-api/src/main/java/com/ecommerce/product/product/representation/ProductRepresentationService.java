@@ -1,5 +1,6 @@
 package com.ecommerce.product.product.representation;
 
+import com.ecommerce.product.representation.product.ProductSummaryRepresentation;
 import com.ecommerce.shared.utils.PagedResource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

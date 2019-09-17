@@ -1,4 +1,4 @@
-package com.ecommerce.product.about;
+package com.ecommerce.product.representation.about;
 
 
 public class AboutRepresentation {
