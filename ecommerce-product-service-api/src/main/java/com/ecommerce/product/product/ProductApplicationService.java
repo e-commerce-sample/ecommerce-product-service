@@ -18,7 +18,7 @@ public class ProductApplicationService {
 
     @Transactional
     public String create(CreateProductCommand command) {
-        Product product = Product.create(command.getName(), command.getDescription(), command.getPrice());
+        Product product = Product.create(command.getName(), command.getDescription(), command.getPrice(), command.getCategoryId());
         productRepository.save(product);
         log.info("Created product[{}].", product.getId());
         return product.getId();

@@ -1,4 +1,4 @@
-package com.ecommerce.product.product.representation;
+package com.ecommerce.product.product;
 
 import com.ecommerce.product.representation.product.ProductSummaryRepresentation;
 import com.ecommerce.shared.utils.PagedResource;
@@ -22,6 +22,7 @@ public class ProductRepresentationService {
     }
 
 
+    // TODO: 2019-09-17 json with product and category
     //直接返回数据库中的Json数据，减少了反序列化和序列化的步骤
     @Transactional(readOnly = true)
     public String byId(String id) {

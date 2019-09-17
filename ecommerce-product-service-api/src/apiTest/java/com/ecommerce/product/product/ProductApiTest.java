@@ -22,7 +22,7 @@ class ProductApiTest extends BaseApiTest {
     public void should_create_product() {
         String id = given()
                 .contentType("application/json")
-                .body(new CreateProductCommand("喜乐多", "喜乐多真好喝", valueOf(2)))
+                .body(new CreateProductCommand("喜乐多", "喜乐多真好喝", valueOf(2), "123456"))
                 .when()
                 .post("/products")
                 .then().statusCode(201)
@@ -34,7 +34,7 @@ class ProductApiTest extends BaseApiTest {
 
     @Test
     public void should_list_product_summary() {
-        range(0, 10).forEach(value -> repository.save(create("喜乐多", "喜乐多真好喝", valueOf(5))));
+        range(0, 10).forEach(value -> repository.save(create("喜乐多", "喜乐多真好喝", valueOf(5), "123456")));
         given()
                 .when()
                 .get("/products?pageIndex=2&pageSize=5")
@@ -45,7 +45,7 @@ class ProductApiTest extends BaseApiTest {
 
     @Test
     public void should_get_product_detail() {
-        Product product = create("喜茶", "喜茶", valueOf(10));
+        Product product = create("喜茶", "喜茶", valueOf(10), "123456");
         repository.save(product);
         given()
                 .when().get("/products/{id}", product.getId())
@@ -56,7 +56,7 @@ class ProductApiTest extends BaseApiTest {
 
     @Test
     public void should_update_product_name() {
-        Product product = create("喜茶", "喜茶", valueOf(10));
+        Product product = create("喜茶", "喜茶", valueOf(10), "123456");
         repository.save(product);
         given()
                 .contentType("application/json")
