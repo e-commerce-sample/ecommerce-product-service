@@ -1,7 +1,7 @@
 package com.ecommerce.product.category;
 
 import com.ecommerce.product.BaseApiTest;
-import com.ecommerce.product.command.category.CreateCategoryCommand;
+import com.ecommerce.product.sdk.command.category.CreateCategoryCommand;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

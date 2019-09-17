@@ -1,8 +1,8 @@
 package com.ecommerce.product.product;
 
 import com.ecommerce.product.BaseApiTest;
-import com.ecommerce.product.command.product.CreateProductCommand;
-import com.ecommerce.product.command.product.UpdateProductNameCommand;
+import com.ecommerce.product.sdk.command.product.CreateProductCommand;
+import com.ecommerce.product.sdk.command.product.UpdateProductNameCommand;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

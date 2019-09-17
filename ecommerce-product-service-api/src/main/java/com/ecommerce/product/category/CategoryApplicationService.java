@@ -1,7 +1,7 @@
 package com.ecommerce.product.category;
 
-import com.ecommerce.product.command.category.CreateCategoryCommand;
-import com.ecommerce.product.representation.category.CategoryRepresentation;
+import com.ecommerce.product.sdk.command.category.CreateCategoryCommand;
+import com.ecommerce.product.sdk.representation.category.CategoryRepresentation;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

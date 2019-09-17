@@ -1,8 +1,8 @@
 package com.ecommerce.product.product;
 
-import com.ecommerce.product.command.product.CreateProductCommand;
-import com.ecommerce.product.command.product.UpdateProductNameCommand;
-import com.ecommerce.product.representation.product.ProductSummaryRepresentation;
+import com.ecommerce.product.sdk.command.product.CreateProductCommand;
+import com.ecommerce.product.sdk.command.product.UpdateProductNameCommand;
+import com.ecommerce.product.sdk.representation.product.ProductSummaryRepresentation;
 import com.ecommerce.shared.utils.PagedResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,8 +1,8 @@
 package com.ecommerce.product.product;
 
 
-import com.ecommerce.product.event.product.ProductCreatedEvent;
-import com.ecommerce.product.event.product.ProductNameUpdatedEvent;
+import com.ecommerce.product.sdk.event.product.ProductCreatedEvent;
+import com.ecommerce.product.sdk.event.product.ProductNameUpdatedEvent;
 import com.ecommerce.shared.model.BaseAggregate;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

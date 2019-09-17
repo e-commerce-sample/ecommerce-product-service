@@ -1,4 +1,4 @@
-package com.ecommerce.product.representation.category;
+package com.ecommerce.product.sdk.representation.category;
 
 import lombok.Builder;
 import lombok.Getter;

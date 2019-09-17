@@ -1,4 +1,4 @@
-package com.ecommerce.product.event.category;
+package com.ecommerce.product.sdk.event.category;
 
 import com.ecommerce.shared.event.DomainEvent;
 import lombok.Getter;

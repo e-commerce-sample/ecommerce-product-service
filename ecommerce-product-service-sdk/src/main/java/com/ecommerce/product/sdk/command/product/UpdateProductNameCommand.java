@@ -1,4 +1,4 @@
-package com.ecommerce.product.command.product;
+package com.ecommerce.product.sdk.command.product;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

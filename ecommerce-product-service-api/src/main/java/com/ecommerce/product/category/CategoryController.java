@@ -1,7 +1,7 @@
 package com.ecommerce.product.category;
 
-import com.ecommerce.product.command.category.CreateCategoryCommand;
-import com.ecommerce.product.representation.category.CategoryRepresentation;
+import com.ecommerce.product.sdk.command.category.CreateCategoryCommand;
+import com.ecommerce.product.sdk.representation.category.CategoryRepresentation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

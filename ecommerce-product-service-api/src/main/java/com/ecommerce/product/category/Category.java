@@ -1,7 +1,7 @@
 package com.ecommerce.product.category;
 
-import com.ecommerce.product.event.category.CategoryCreatedEvent;
-import com.ecommerce.product.representation.category.CategoryRepresentation;
+import com.ecommerce.product.sdk.event.category.CategoryCreatedEvent;
+import com.ecommerce.product.sdk.representation.category.CategoryRepresentation;
 import com.ecommerce.shared.model.BaseAggregate;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
