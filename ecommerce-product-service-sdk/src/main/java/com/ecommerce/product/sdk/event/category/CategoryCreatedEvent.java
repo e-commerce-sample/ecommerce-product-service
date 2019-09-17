@@ -1,11 +1,18 @@
 package com.ecommerce.product.sdk.event.category;
 
-import com.ecommerce.shared.event.DomainEvent;
-import lombok.Value;
+import lombok.Getter;
 
-@Value
-public class CategoryCreatedEvent extends DomainEvent {
-    private String categoryId;
+import java.beans.ConstructorProperties;
+
+@Getter
+public class CategoryCreatedEvent extends CategoryEvent {
     private String name;
     private String description;
+
+    @ConstructorProperties({"categoryId", "name", "description"})
+    public CategoryCreatedEvent(String categoryId, String name, String description) {
+        super(categoryId);
+        this.name = name;
+        this.description = description;
+    }
 }

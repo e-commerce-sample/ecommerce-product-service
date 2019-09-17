@@ -1,12 +1,19 @@
 package com.ecommerce.product.sdk.event.product;
 
-import com.ecommerce.shared.event.DomainEvent;
-import lombok.Value;
+import lombok.Getter;
 
-@Value
-public class ProductNameUpdatedEvent extends DomainEvent {
-    private String productId;
+import java.beans.ConstructorProperties;
+
+@Getter
+public class ProductNameUpdatedEvent extends ProductEvent {
     private String oldName;
     private String newName;
+
+    @ConstructorProperties({"productId", "oldName", "newName"})
+    public ProductNameUpdatedEvent(String productId, String oldName, String newName) {
+        super(productId);
+        this.oldName = oldName;
+        this.newName = newName;
+    }
 
 }
