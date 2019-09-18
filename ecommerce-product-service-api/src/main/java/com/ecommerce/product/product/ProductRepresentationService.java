@@ -20,7 +20,7 @@ public class ProductRepresentationService {
     private static final String COUNT_SQL = "SELECT COUNT(1) FROM PRODUCT;";
 
     // CHECKSTYLE:OFF
-    private static final String PRODUCT_WITH_CATEGORY_SQL = "SELECT PRODUCT.ID, PRODUCT.NAME, CATEGORY.NAME AS CATEGORY_NAME FROM PRODUCT JOIN CATEGORY ON PRODUCT.CATEGORY_ID=CATEGORY.ID WHERE PRODUCT.ID=:productId;";
+    private static final String PRODUCT_WITH_CATEGORY_SQL = "SELECT PRODUCT.ID, PRODUCT.NAME, CATEGORY.ID AS CATEGORY_ID, CATEGORY.NAME AS CATEGORY_NAME FROM PRODUCT JOIN CATEGORY ON PRODUCT.CATEGORY_ID=CATEGORY.ID WHERE PRODUCT.ID=:productId;";
     // CHECKSTYLE:ON
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
@@ -58,6 +58,7 @@ public class ProductRepresentationService {
         return jdbcTemplate.queryForObject(PRODUCT_WITH_CATEGORY_SQL, of("productId", id),
                 (rs, rowNum) -> new ProductWithCategoryRepresentation(rs.getString("ID"),
                         rs.getString("NAME"),
+                        rs.getString("CATEGORY_ID"),
                         rs.getString("CATEGORY_NAME")));
     }
 

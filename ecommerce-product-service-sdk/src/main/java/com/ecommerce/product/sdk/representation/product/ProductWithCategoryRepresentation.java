@@ -7,5 +7,6 @@ import lombok.Value;
 public class ProductWithCategoryRepresentation {
     private String id;
     private String name;
+    private String categoryId;
     private String categoryName;
 }
