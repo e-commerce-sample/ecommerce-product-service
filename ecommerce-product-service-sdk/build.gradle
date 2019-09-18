@@ -6,7 +6,6 @@ plugins {
 
 dependencies {
     api("com.ecommerce:ecommerce-shared-model:0.12-SNAPSHOT") { changing = true }
-    api("com.ecommerce:order-sdk:0.1-SNAPSHOT") { changing = true }
 }
 
 task sourcesJar(type: Jar) {
