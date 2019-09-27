@@ -1,6 +1,6 @@
 package com.ecommerce.product.product;
 
-import com.ecommerce.inventory.event.inventory.InventoryChangedEvent;
+import com.ecommerce.inventory.sdk.event.inventory.InventoryChangedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

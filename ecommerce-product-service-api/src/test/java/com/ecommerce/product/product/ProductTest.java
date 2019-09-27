@@ -10,7 +10,7 @@ class ProductTest {
 
     @Test
     public void should_create_product() {
-        Product product = Product.create("name", "desc", BigDecimal.valueOf(12.0));
+        Product product = Product.create("name", "desc", BigDecimal.valueOf(12.0), "123456");
         assertNotNull(product);
     }
 }

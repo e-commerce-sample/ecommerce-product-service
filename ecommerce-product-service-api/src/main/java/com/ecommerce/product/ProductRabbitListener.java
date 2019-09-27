@@ -1,6 +1,6 @@
 package com.ecommerce.product;
 
-import com.ecommerce.inventory.event.inventory.InventoryChangedEvent;
+import com.ecommerce.inventory.sdk.event.inventory.InventoryChangedEvent;
 import com.ecommerce.product.product.ProductEventHandler;
 import com.ecommerce.spring.common.event.messaging.rabbit.EcommerceRabbitListener;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

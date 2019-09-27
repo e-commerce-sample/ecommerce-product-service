@@ -1,4 +1,4 @@
-package com.ecommerce.product.product;
+package com.ecommerce.product.category;
 
 import com.ecommerce.shared.jackson.DefaultObjectMapper;
 import com.ecommerce.shared.model.BaseRepository;
@@ -12,36 +12,37 @@ import java.util.Map;
 import static com.google.common.collect.ImmutableMap.of;
 
 @Component
-public class ProductRepository extends BaseRepository<Product> {
+public class CategoryRepository extends BaseRepository<Category> {
+
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final DefaultObjectMapper objectMapper;
 
-    public ProductRepository(NamedParameterJdbcTemplate jdbcTemplate,
-                             DefaultObjectMapper objectMapper) {
+    public CategoryRepository(NamedParameterJdbcTemplate jdbcTemplate,
+                              DefaultObjectMapper objectMapper) {
         this.jdbcTemplate = jdbcTemplate;
         this.objectMapper = objectMapper;
     }
 
+
     @Override
-    protected void doSave(Product product) {
-        String sql = "INSERT INTO PRODUCT (ID, JSON_CONTENT) VALUES (:id, :json) " +
+    protected void doSave(Category category) {
+        String sql = "INSERT INTO CATEGORY (ID, JSON_CONTENT) VALUES (:id, :json) " +
                 "ON DUPLICATE KEY UPDATE JSON_CONTENT=:json;";
-        Map<String, String> paramMap = of("id", product.getId(), "json", objectMapper.writeValueAsString(product));
+        Map<String, String> paramMap = of("id", category.getId(), "json", objectMapper.writeValueAsString(category));
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public Product byId(String id) {
+    public Category byId(String id) {
         try {
-            String sql = "SELECT JSON_CONTENT FROM PRODUCT WHERE ID=:id;";
+            String sql = "SELECT JSON_CONTENT FROM CATEGORY WHERE ID=:id;";
             return jdbcTemplate.queryForObject(sql, of("id", id), mapper());
         } catch (EmptyResultDataAccessException e) {
-            throw new ProductNotFoundException(id);
+            throw new CategoryNotFoundException(id);
         }
     }
 
 
-    private RowMapper<Product> mapper() {
-        return (rs, rowNum) -> objectMapper.readValue(rs.getString("JSON_CONTENT"), Product.class);
+    private RowMapper<Category> mapper() {
+        return (rs, rowNum) -> objectMapper.readValue(rs.getString("JSON_CONTENT"), Category.class);
     }
-
 }

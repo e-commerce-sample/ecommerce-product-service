@@ -1,7 +1,7 @@
 package com.ecommerce.product.product;
 
-import com.ecommerce.product.command.product.CreateProductCommand;
-import com.ecommerce.product.command.product.UpdateProductNameCommand;
+import com.ecommerce.product.sdk.command.product.CreateProductCommand;
+import com.ecommerce.product.sdk.command.product.UpdateProductNameCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +18,7 @@ public class ProductApplicationService {
 
     @Transactional
     public String create(CreateProductCommand command) {
-        Product product = Product.create(command.getName(), command.getDescription(), command.getPrice());
+        Product product = Product.create(command.getName(), command.getDescription(), command.getPrice(), command.getCategoryId());
         productRepository.save(product);
         log.info("Created product[{}].", product.getId());
         return product.getId();

@@ -15,7 +15,7 @@ class ProductRepositoryComponentTest extends BaseComponentTest {
 
     @Test
     public void should_save_product() {
-        Product product = Product.create("娃哈哈", "小孩喝的娃哈哈", valueOf(2));
+        Product product = Product.create("娃哈哈", "小孩喝的娃哈哈", valueOf(2), "123456");
         repository.save(product);
         Product saved = repository.byId(product.getId());
         assertEquals(product.getId(), saved.getId());

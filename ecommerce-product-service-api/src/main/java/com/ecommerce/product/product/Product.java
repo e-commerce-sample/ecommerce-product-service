@@ -1,15 +1,20 @@
 package com.ecommerce.product.product;
 
 
-import com.ecommerce.product.event.product.ProductCreatedEvent;
-import com.ecommerce.product.event.product.ProductNameUpdatedEvent;
+import com.ecommerce.product.sdk.event.product.ProductCreatedEvent;
+import com.ecommerce.product.sdk.event.product.ProductNameUpdatedEvent;
+import com.ecommerce.product.sdk.representation.product.ProductRepresentation;
 import com.ecommerce.shared.model.BaseAggregate;
+import lombok.Builder;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
 import static com.ecommerce.shared.utils.UuidGenerator.newUuid;
 
+@Builder
+@Getter
 public class Product extends BaseAggregate {
     private String id;
     private String name;
@@ -17,21 +22,18 @@ public class Product extends BaseAggregate {
     private BigDecimal price;
     private Instant createdAt;
     private int inventory;
+    private String categoryId;
 
-    private Product() {
-    }
-
-    private Product(String name, String description, BigDecimal price) {
-        this.id = newUuid();
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.createdAt = Instant.now();
-        this.inventory = 0;
-    }
-
-    public static Product create(String name, String description, BigDecimal price) {
-        Product product = new Product(name, description, price);
+    public static Product create(String name, String description, BigDecimal price, String categoryId) {
+        Product product = Product.builder()
+                .id(newUuid())
+                .name(name)
+                .description(description)
+                .price(price)
+                .createdAt(Instant.now())
+                .inventory(0)
+                .categoryId(categoryId)
+                .build();
         product.raiseEvent(new ProductCreatedEvent(product.getId(), name, description, price, product.getCreatedAt()));
         return product;
     }
@@ -45,27 +47,13 @@ public class Product extends BaseAggregate {
         this.inventory = inventory;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public int getInventory() {
-        return inventory;
+    public ProductRepresentation toRepresentation() {
+        return new ProductRepresentation(id,
+                name,
+                description,
+                price,
+                createdAt,
+                inventory,
+                categoryId);
     }
 }
